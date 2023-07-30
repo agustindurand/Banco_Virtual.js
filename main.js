@@ -48,3 +48,4 @@ function calcularPrestamo() {
         document.getElementById("resultadoPrestamo").innerHTML = "No cumple con el ingreso mínimo solicitado.";
     }
 }
+
