@@ -41,6 +41,16 @@ function calcularPrestamo() {
                 "<br>Cantidad de cuotas: " + cuotas +
                 "<br>Total de intereses: $" + totalIntereses.toFixed(2) +
                 "<br>Total a devolver: $" + totalPrestamo.toFixed(2);
+
+              // Almacenar datos en el localStorage utilizando JSON.stringify
+              const datosPrestamo = {
+                montoPrestamo: prestamo,
+                cuotas: cuotas,
+                interes: interes,
+                totalIntereses: totalIntereses,
+                totalPrestamo: totalPrestamo,
+            };
+            localStorage.setItem("datosPrestamo", JSON.stringify(datosPrestamo));
         } else {
             document.getElementById("resultadoPrestamo").innerHTML = "Por favor, acérquese a la sucursal para solicitar un préstamo.";
         }
@@ -48,6 +58,24 @@ function calcularPrestamo() {
         document.getElementById("resultadoPrestamo").innerHTML = "No cumple con el ingreso mínimo solicitado.";
     }
 }
+
+// Local Storage // 
+// Función para cargar datos del localStorage y mostrarlos al cargar la página
+function cargarDatosAlIniciar() {
+    // Obtener datos almacenados en el localStorage utilizando JSON.parse
+    const datosPrestamo = JSON.parse(localStorage.getItem("datosPrestamo"));
+
+    // Verificar si hay datos almacenados y mostrarlos en el resultado
+    if (datosPrestamo) {
+        document.getElementById("resultadoPrestamo").innerHTML = "Monto del préstamo: $" + datosPrestamo.montoPrestamo.toFixed(2) +
+            "<br>Cantidad de cuotas: " + datosPrestamo.cuotas +
+            "<br>Total de intereses: $" + datosPrestamo.totalIntereses.toFixed(2) +
+            "<br>Total a devolver: $" + datosPrestamo.totalPrestamo.toFixed(2);
+    }
+}
+
+// Evento para cargar datos al iniciar la página
+window.addEventListener("load", cargarDatosAlIniciar);
 
 // Session Storage // 
 const login = document.getElementById("login");
