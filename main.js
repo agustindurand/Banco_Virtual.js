@@ -49,3 +49,16 @@ function calcularPrestamo() {
     }
 }
 
+// Session Storage // 
+const login = document.getElementById("login");
+login.addEventListener ("submit", function(event) {
+    event.preventDefault ();
+
+const username = document.getElementById("email").value;
+const contraseña = document.getElementById("direccion").value;
+
+if (username === "usuario" && contraseña == "contraseña") {
+    sessionStorage.setItem ("loggedIn", "true");
+    window.location.href="index.html"
+}
+})
