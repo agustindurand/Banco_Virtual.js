@@ -28,9 +28,9 @@ function calcularPrestamo() {
             let cuotas = 0;
 
             // Bucle While, en el cual se le asignara valores a las variables Prestamo y Cuotas mediante prompt, las cuales deberan ser maypres a 0)
-            while (prestamo <= 0 || cuotas <= 0) {
-                prestamo = parseFloat(prompt("Ingrese el monto del préstamo:"));
-                cuotas = parseInt(prompt("Ingrese la cantidad de cuotas:"));
+            while (! (prestamo > 0) || !(cuotas> 0)) {
+                prestamo = parseFloat(prompt("Ingrese el monto del préstamo:")) || 0;
+                cuotas = parseInt(prompt("Ingrese la cantidad de cuotas:")) || 0;
             }
             // Variables, de interes el cual vamos a aplicar a lo anterior, de total de intereses a pagar y de total de prestamo con sus operaciones //
             let interes = 0.12; // Tasa de interés del 12%
@@ -63,7 +63,7 @@ function calcularPrestamo() {
 // Función para cargar datos del localStorage y mostrarlos al cargar la página
 function cargarDatosAlIniciar() {
     // Obtener datos almacenados en el localStorage utilizando JSON.parse
-    const datosPrestamo = JSON.parse(localStorage.getItem("datosPrestamo"));
+    const datosPrestamo = JSON.parse(localStorage.getItem("datosPrestamo")) ?? {};
 
     // Verificar si hay datos almacenados y mostrarlos en el resultado
     if (datosPrestamo) {
