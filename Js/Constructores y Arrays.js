@@ -22,14 +22,14 @@ class Tarjeta {
 function mostrarProductos() {
     const productosContainer = document.getElementById("productos-container");
 
-    tarjetas.forEach(tarjeta => {
+    Tarjetas.forEach(tarjeta => {
         const productoCard = document.createElement("div");
         productoCard.classList.add("producto-card");
 
         productoCard.innerHTML = `
             <h3>${tarjeta.marca}</h3>
             <p>Color: ${tarjeta.color}</p>
-            <p>${tarjeta.internacional ? "Internacional" : "Nacional"}</p>
+            <p>${tarjeta.alcance ? "Internacional" : "Nacional"}</p>
             <p>Monto máximo: $${tarjeta.montoMaximo.toFixed(2)}</p>
         `;
 
