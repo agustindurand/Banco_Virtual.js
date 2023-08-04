@@ -43,13 +43,7 @@ function calcularPrestamo() {
                 "<br>Total a devolver: $" + totalPrestamo.toFixed(2);
 
               // Almacenar datos en el localStorage utilizando JSON.stringify
-              const datosPrestamo = {
-                montoPrestamo: prestamo,
-                cuotas: cuotas,
-                interes: interes,
-                totalIntereses: totalIntereses,
-                totalPrestamo: totalPrestamo,
-            };
+              const datosPrestamo = { prestamo, cuotas, interes, totalIntereses, totalPrestamo};
             localStorage.setItem("datosPrestamo", JSON.stringify(datosPrestamo));
         } else {
             document.getElementById("resultadoPrestamo").innerHTML = "Por favor, acérquese a la sucursal para solicitar un préstamo.";
