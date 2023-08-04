@@ -1,25 +1,43 @@
 
-
-function Tarjeta(marca, color, internacional, montoMaximo) {
+//Define la clase Tarjeta //
+class Tarjeta {
+    constructor (marca, color, alcance, montoMaximo) { 
     this.marca = marca;
     this.color = color;
-    this.internacional = internacional;
+    this.alcance = alcance;
     this.montoMaximo = montoMaximo; 
+    }
   }
-  
-  // Crear instancias de tarjetas utilizando el constructor
-  const tarjeta1 = new Tarjeta("Visa", "Dorado", false, 1000000);
-  const tarjeta2 = new Tarjeta("Mastercard", "Plateado", true, 300000);
-  const tarjeta3 = new Tarjeta("Mastercard", "Dorado", true, 1300000);
-  const tarjeta4 = new Tarjeta("American Express", "Azul", true, 2000000);
-  
-  // Crear un array que contiene objetos 
-  let tarjetas = [tarjeta1, tarjeta2, tarjeta3, tarjeta4];
+
+  // Instancias de Tarjetas utilizando la clase // 
+  const Tarjetas = [ 
+        new Tarjeta("Visa", "Dorado", false, 1000000),
+        new Tarjeta("Mastercard", "Plateado", true, 300000),
+        new Tarjeta("Mastercard", "Dorado", true, 1300000),
+        new Tarjeta("American Express", "Azul", true, 2000000),
+        ]
 
 
-  console.log(tarjetas[3].color); 
+    // Función para mostrar productos en la página
+function mostrarProductos() {
+    const productosContainer = document.getElementById("productos-container");
 
-  // Retorno de Funcion //
+    tarjetas.forEach(tarjeta => {
+        const productoCard = document.createElement("div");
+        productoCard.classList.add("producto-card");
+
+        productoCard.innerHTML = `
+            <h3>${tarjeta.marca}</h3>
+            <p>Color: ${tarjeta.color}</p>
+            <p>${tarjeta.internacional ? "Internacional" : "Nacional"}</p>
+            <p>Monto máximo: $${tarjeta.montoMaximo.toFixed(2)}</p>
+        `;
+
+        productosContainer.appendChild(productoCard);
+    });
+}
+
+  // Retorno de Funcion de edad minima //
 
   function edadMinimaParaTarjeta (minimo) {
     return function (edadUsuario) {
@@ -30,9 +48,11 @@ function Tarjeta(marca, color, internacional, montoMaximo) {
         }
     }
   }
+  window.addEventListener("load", mostrarProductos);
+
 
   let verificarMayoriaEdad = edadMinimaParaTarjeta(18);
   let edadIngresada = prompt ("Ingrese edad: ");
-  let edad = edadIngresada;
+  let edad = parseInt(edadIngresada);
 
   verificarMayoriaEdad(edad);
