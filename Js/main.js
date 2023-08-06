@@ -36,11 +36,13 @@ function calcularPrestamo() {
             let interes = 0.12; // Tasa de interés del 12%
             let totalIntereses = prestamo * interes * cuotas;
             let totalPrestamo = prestamo + totalIntereses;
+            let valorCuota = totalPrestamo / cuotas;
 
             document.getElementById("resultadoPrestamo").innerHTML = "Monto del préstamo: $" + prestamo.toFixed(2) +
                 "<br>Cantidad de cuotas: " + cuotas +
                 "<br>Total de intereses: $" + totalIntereses.toFixed(2) +
-                "<br>Total a devolver: $" + totalPrestamo.toFixed(2);
+                "<br>Total a devolver: $" + totalPrestamo.toFixed(2) +
+                "<br> Valor de Cuota: $ " + valorCuota.toFixed(2);
 
               // Almacenar datos en el localStorage utilizando JSON.stringify
               const datosPrestamo = { prestamo, cuotas, interes, totalIntereses, totalPrestamo};
