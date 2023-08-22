@@ -12,8 +12,39 @@ function convertirMoneda() {
     document.getElementById("resultado").innerHTML = "USD " + dolarEstadounidense.toFixed(2);
 }
 
+    const botonPrimeraVez = document.getElementById("boton1");
+    botonPrimeraVez.onclick = () => {
+        Swal.fire({
+            title: 'Alto',
+            text: 'Inicie sesion o registrese ',
+            icon: 'info',
+            confirmButtonText: 'Aceptar' ,
+            footer: '<a href="../html/registraciocuenta"> Presione aqui </a>' 
+          })
+    }
+
+
+    const botonOpinion = document.getElementById("boton2");
+    botonOpinion.onclick = () => {
+        Swal.fire({
+            title: 'Como nos califica?',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Buen servicio',
+            denyButtonText: `Mal servicio`,
+          }).then((result) => {
+           
+            if (result.isConfirmed) {
+              Swal.fire('Saved!', '', 'success')
+            } else if (result.isDenied) {
+              Swal.fire('Changes are not saved', '', 'info')
+            }
+          })
+    }
+
+
 // Declaracion de la Funcion //
-function calcularPrestamo() {
+function calcularPrestamo() { 
     // Obtiene el valor ingresado en el elemento html ingresoNeto y tiene la utilizacion de parseFloat para convertilo en decimal //
     let ingresoNeto = parseFloat(document.getElementById("ingresoNeto").value);
 
