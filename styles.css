@@ -82,3 +82,27 @@ body {
   top: 10px;
   right: 10px; 
 }
+
+/* MEDIA QUERIES */ 
+@media screen and (max-width: 768px) { 
+  /* Ajustar el tamaño del encabezado para dispositivos móviles */
+  h1 {
+    font-size: 24px;
+  }
+  
+  /* Alinear el botón de "Crear Cuenta" en el centro */
+  .btncrearcuenta {
+    display: block;
+    margin: 0 auto;
+  }
+  
+  /* Ajustar el ancho de los formularios */
+  form {
+    max-width: 90%; /* O cualquier otro valor que funcione mejor para tu diseño */
+  }
+  
+  /* Ajustar el tamaño del texto en los formularios */
+  label, input {
+    font-size: 14px;
+  }
+}
